@@ -27,3 +27,12 @@ $factory->define(App\Product::class, function(Faker\Generator $f){
         'description' => $f->sentence($nbWords = 3)
     ];
 });
+
+$factory->define(App\Problem::class, function(Faker\Generator $f){
+    return [
+        'title' => $f->sentence($nbWords = 2),
+        'description' => $f->paragraph($nbSentences = 3),
+        'user_id' => factory(App\User::class)->create()->id,
+        'product_id' => factory(App\Product::class)->create()->id,
+    ];
+});
