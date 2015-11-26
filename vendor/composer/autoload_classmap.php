@@ -6,6 +6,7 @@ $vendorDir = dirname(dirname(__FILE__));
 $baseDir = dirname($vendorDir);
 
 return array(
+    'ChangeProductsCodeToUnique' => $baseDir . '/database/migrations/2015_11_26_040104_change_products_code_to_unique.php',
     'CreateCommentsTable' => $baseDir . '/database/migrations/2015_11_25_085046_create_comments_table.php',
     'CreatePasswordResetsTable' => $baseDir . '/database/migrations/2014_10_12_100000_create_password_resets_table.php',
     'CreateProblemsTable' => $baseDir . '/database/migrations/2015_11_25_081413_create_problems_table.php',
