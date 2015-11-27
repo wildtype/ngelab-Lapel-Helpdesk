@@ -32,6 +32,7 @@ class ProductController extends Controller
     public function create()
     {
         //
+        return view('product/create'); 
     }
 
     /**
@@ -43,6 +44,23 @@ class ProductController extends Controller
     public function store(Request $request)
     {
         //
+        #$rules = [
+        #    'name'      => 'required',
+        #    'code'      => 'required'
+        #];
+
+        #$validator = Validator::make(Input::all(), $rules);
+        
+        //TODO: validasi, sekarang insert dulu
+
+        $product = new \App\Product;
+        $product->name = $request->name;
+        $product->code = $request->code;
+        $product->description = $request->description;
+        $product->save();
+
+        $request->session()->flash('message', 'Produk berhasil didaftarkan');
+        return redirect('product');
     }
 
     /**
