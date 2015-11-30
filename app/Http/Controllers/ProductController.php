@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
 use App\Product;
+use Session;
 
 class ProductController extends Controller
 {
@@ -54,7 +55,7 @@ class ProductController extends Controller
         //TODO: validasi, sekarang insert dulu
 
         Product::create($request->all());
-        $request->session()->flash('message', 'Produk berhasil didaftarkan');
+        Session::flash('message', 'Produk berhasil didaftarkan');
         return redirect('product');
     }
 
@@ -98,9 +99,9 @@ class ProductController extends Controller
         ]);
 
         $input = $request->all();
-        $task->fill($input)->save();
+        $product->fill($input)->save();
         Session::flash('message_success', 'Product Successfully updated');
-        return redirect()->back();
+        return redirect()->route('product.index');
     }
 
     /**
