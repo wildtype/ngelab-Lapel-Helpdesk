@@ -2,5 +2,7 @@
 Homestead.yaml
 Homestead.json
 .env
+*.swp
+
 
 tests/_output/*

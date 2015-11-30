@@ -1,7 +1,8 @@
 @extends('layouts.utama')
 
 
-@section('tabel')
+@section('content')
+<h1>Product List</h1>
 <table class="pure-table">
     <thead>
         <tr><th>Code</th><th>Name</th><th>Description</th><th>Action</th>
@@ -21,6 +22,7 @@
         @endforeach
     </tbody>
 </table>
+{!! $products->render() !!}
 @endsection
 
 @section('title', 'Product List')

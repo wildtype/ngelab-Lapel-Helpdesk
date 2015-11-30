@@ -18,7 +18,7 @@ class ProductController extends Controller
     public function index()
     {
         //
-        $allProducts = Product::all();
+        $allProducts = Product::paginate(10);
         return view('product/index', [
             'products' => $allProducts
         ]);
@@ -53,12 +53,7 @@ class ProductController extends Controller
         
         //TODO: validasi, sekarang insert dulu
 
-        $product = new \App\Product;
-        $product->name = $request->name;
-        $product->code = $request->code;
-        $product->description = $request->description;
-        $product->save();
-
+        Product::create($request->all());
         $request->session()->flash('message', 'Produk berhasil didaftarkan');
         return redirect('product');
     }
@@ -83,6 +78,8 @@ class ProductController extends Controller
     public function edit($id)
     {
         //
+        $product = Product::find($id);
+        return view('product/edit', [ 'product' => $product]);   
     }
 
     /**
