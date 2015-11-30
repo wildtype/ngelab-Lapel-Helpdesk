@@ -16,7 +16,13 @@
             <td>{{ $p->description }}</td>
             <td>
                 <a href="{{ route('product.edit', ['id' => $p->id]) }}" class="edit_link">Edit</a>
-                <a href="{{ route('product.destroy', ['id' => $p->id]) }}" class="delete_link">Delete</a>
+                <!--<a href="{{ route('product.destroy', ['id' => $p->id]) }}" class="delete_link">Delete</a>-->
+                {!! Form::open(['method'=>'DELETE', 
+                                'route'=>['product.destroy', $p->id]]) !!}
+                    {!! Form::submit('Delete Product', 
+                                     ['class' => 'pure-button pure-button-warning button-small',
+                                      'id' => 'delete-'.$p->code]) !!}
+                {!! Form::close() !!}
             </td>
         </tr>
         @endforeach

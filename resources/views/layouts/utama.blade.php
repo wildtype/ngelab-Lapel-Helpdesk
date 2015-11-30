@@ -9,6 +9,9 @@
             max-width: 768px;
             margin:auto;
         }
+        .button-small {
+            font-size: 65%;
+        }
         </style>
     </head>
 
