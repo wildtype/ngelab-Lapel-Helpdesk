@@ -3,7 +3,8 @@
 @section('content')
 
 <h1>Edit Product</h1>
-{!! Form::model($product, ['route' => ['product.update', $product->id], 
+{!! Form::model($product, ['method' => 'PATCH', 
+                            'route' => ['product.update', $product->id], 
                             'class' => 'pure-form pure-form-stacked']) !!}
 <div class="pure-u-1">
     {!! Form::label('name', 'Product Name') !!}

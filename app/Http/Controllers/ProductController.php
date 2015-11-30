@@ -78,7 +78,7 @@ class ProductController extends Controller
     public function edit($id)
     {
         //
-        $product = Product::find($id);
+        $product = Product::findOrFail($id);
         return view('product/edit', [ 'product' => $product]);   
     }
 
@@ -91,7 +91,16 @@ class ProductController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $product = Product::findOrFail($id);
+        $this->validate($request,[
+            'name' => 'required',
+            'code' => 'required'
+        ]);
+
+        $input = $request->all();
+        $task->fill($input)->save();
+        Session::flash('message_success', 'Product Successfully updated');
+        return redirect()->back();
     }
 
     /**
