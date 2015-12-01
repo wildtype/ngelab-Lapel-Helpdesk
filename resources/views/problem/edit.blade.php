@@ -1,11 +1,11 @@
 @extends('layouts.utama')
-@section('title', 'Create New Problem')
+@section('title')Edit Problem: {{ $problem->title }}@endsection
 
 @section('content')
 <div class="content">
 <h1>Create New Problem</h1>
-{!! Form::open(['method' => 'POST', 
-                            'route' => ['problem.store'], 
+{!! Form::model($problem, ['method' => 'PATCH', 
+                            'route' => ['problem.update', $problem->id], 
                             'class' => 'pure-form pure-form-stacked']) !!}
 <div class="pure-u-1">
     {!! Form::label('title', 'Title') !!}

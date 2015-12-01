@@ -7,6 +7,9 @@ use Illuminate\Http\Request;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
 use App\Problem;
+use App\Product;
+use App\User;
+use Session;
 
 class ProblemController extends Controller
 {
@@ -30,7 +33,9 @@ class ProblemController extends Controller
     public function create()
     {
         //
-        return view('problem/create');
+        $users = User::lists('name','id');
+        $products = Product::lists('name','id');
+        return view('problem/create', ['users'=>$users,'products'=>$products]);
     }
 
     /**
@@ -42,6 +47,9 @@ class ProblemController extends Controller
     public function store(Request $request)
     {
         //
+        Problem::create($request->all());
+        return redirect()->route('problem.index');
+        //dd($request->all());
     }
 
     /**
@@ -53,6 +61,8 @@ class ProblemController extends Controller
     public function show($id)
     {
         //
+        $problem = Problem::findOrFail($id);
+        return view('problem.show', ['problem'=>$problem]);
     }
 
     /**
@@ -64,6 +74,10 @@ class ProblemController extends Controller
     public function edit($id)
     {
         //
+        $problem = Problem::findOrFail($id);
+        $users = User::lists('name','id');
+        $products = Product::lists('name','id');
+        return view('problem.edit', ['problem'=>$problem, 'products'=>$products, 'users'=>$users]);
     }
 
     /**
@@ -87,5 +101,9 @@ class ProblemController extends Controller
     public function destroy($id)
     {
         //
+        $problem = Problem::findOrFail($id);
+        $problem->delete();
+        Session::flash('flash_message', 'Problem Deleted');
+        return redirect()->route('problem.index');
     }
 }

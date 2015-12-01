@@ -13,8 +13,8 @@
         @foreach($problems as $p)
         <tr>
             <td><a href="{{ route('problem.show', ['id'=>$p->id]) }}">{{ $p->title }}</a></td>
-            <td>{{ $p->product_id }}</td>
-            <td>{{ $p->user_id }}</td>
+            <td>{{ $p->product->name }}</td>
+            <td>{{ $p->user->name }}</td>
         </tr>
         @endforeach
     </tbody>
