@@ -11,7 +11,7 @@
     <tbody>
         @foreach($products as $p)
         <tr>
-            <td>{{ $p->code }}</td>
+            <td><a href="{{ route('product.show', ['id'=>$p->id]) }}">{{ $p->code }}</a></td>
             <td>{{ $p->name }}</td>
             <td>{{ $p->description }}</td>
             <td>

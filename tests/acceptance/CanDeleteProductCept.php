@@ -9,7 +9,7 @@ $I->click('Submit');
 $I->see('nama produk untuk dihapus lagi');
 $I->amOnPage('/product');
 $I->click('Code-009');
-$I->seeCurrentUrlMatches('~$/product/(\d+)~');
+$I->seeCurrentUrlMatches('~^/product/(\d+)~');
 $I->see('View Product Code-009');
 $I->see('nama produk untuk dihapus lagi');
 $I->amOnPage('/product');
