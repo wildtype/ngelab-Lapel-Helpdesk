@@ -30,6 +30,7 @@ class ProblemController extends Controller
     public function create()
     {
         //
+        return view('problem/create');
     }
 
     /**
