@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
+use App\Problem;
 
 class ProblemController extends Controller
 {
@@ -17,6 +18,8 @@ class ProblemController extends Controller
     public function index()
     {
         //
+        $problems = Problem::all();
+        return view('problem/index', ['problems'=>$problems]);
     }
 
     /**
